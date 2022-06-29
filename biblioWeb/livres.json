@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1",
+        "isbn": "123abc456",
+        "titre": "angularJS for ever depuis webservice",
+        "dateDeParution": "2022-04-01",
+        "prix": 123.125
+    },
+    {
+        "id": "2",
+        "isbn": "123abc456",
+        "titre": "angularJS for ever2",
+        "dateDeParution": "2022-04-01",
+        "prix": 413.125
+    },
+    {
+        "id": "3",
+        "isbn": "123abc456",
+        "titre": "angularJS for ever3",
+        "dateDeParution": "2022-04-01",
+        "prix": 123.125
+    },
+    {
+        "id": "4",
+        "isbn": "123abc456",
+        "titre": "angularJS for ever4",
+        "dateDeParution": "2022-04-01",
+        "prix": 123.125
+    },
+    {
+        "id": "5",
+        "isbn": "123abc456",
+        "titre": "angularJS for ever5",
+        "dateDeParution": "2022-04-01",
+        "prix": 13.125
+    },
+    {
+        "id": "6",
+        "isbn": "123abc456",
+        "titre": "angularJS for ever6",
+        "dateDeParution": "2022-04-01",
+        "prix": 123.125
+    },
+    {
+        "id": "7",
+        "isbn": "123abc456",
+        "titre": "angularJS for ever7",
+        "dateDeParution": "2022-04-01",
+        "prix": 3.125
+    },
+    {
+        "id": "8",
+        "isbn": "123abc456",
+        "titre": "angularJS for ever7",
+        "dateDeParution": "2022-04-01",
+        "prix": 3.125
+    }
+]

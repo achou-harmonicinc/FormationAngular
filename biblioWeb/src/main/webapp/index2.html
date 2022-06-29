@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="monAppli">
+
+<head>
+    <link rel="SHORTCUT ICON" href="images/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/angular-locale_en-us.js"></script>
+    <script type="text/javascript" src="js/angular-locale_fr-fr.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <h1>biblioWork</h1>
+</body>
+
+<div ng-controller="controleurPrincipal">
+    {{titre}}
+    <div ng-controller="controleurInterne">
+        {{$parent.titre}}
+        {{titre}}
+        <br />
+        <p ng-bind="titre"></p>
+        <input type="text" ng-blur="afficherOk();" ng-model="titre" />
+        <br />
+        <p ng-bind="::titre"></p>
+
+        Login : <input type="text" ng-model="username" ng-model-options="{ getterSetter : true}" />
+
+        <table>
+            <tr>
+                <th ng-click="toggleSort()">id</th>
+                <th>isbn</th>
+                <th>titre</th>
+            </tr>
+            <tr ng-repeat="livre in livres | orderBy: idSort | limitTo: '6'" ng-class="{rouge: $odd, vert : $even}">
+                <td>coucou {{livre.id}}</td>
+                <td>{{livre.isbn}}</td>
+                <td>{{livre.titre}}</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <br />
+
+        {{200.5 | currency }} et
+        {{15.456 | currency : "USD$":1}}
+
+        <form ng-submit="validerForm()">
+            <input ng-model="data.titre" placeholder="titre">
+            <input ng-model="data.isbn" placeholder="isbn">
+            <input type="submit">
+        </form>
+        <table>
+
+            <br>
+            </br>
+
+
+            <button ng-click="ajouterLivre()">ajouter livre</button>
+
+            <input type="range" ng-model="plage" step="1" min="1" max="10" />
+            <br /> {{plage}}
+            <div ng-class="{rouge: plage>5, vert: plage<5}">zone</div>
+            <br />
+
+    </div>
+</div>
+
+<p></p>
+
+
+
+
+
+</html>
