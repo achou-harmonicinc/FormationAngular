@@ -1,3 +1,49 @@
-<div ng-controller="controleurInscription"> 
-<h2 ng-bind="titrePage"></h2>
+<div ng-controller="controleurInscription" style="margin: 5%;">
+	<h2>Inscription</h2>
+
+	<form name="inscriptionForm" ng-submit="validerInscription()"
+		class="row g-3 needs-validation" novalidate>
+		<div class="mb-3">
+			<label for="exampleInputEmail1" class="form-label">nom</label> <input
+				type="text" ng-model="utilisateur.nom" name="nom"
+				required="required" class="form-control"
+				ng-class="{'is-invalid': inscriptionForm.nom.$invalid && inscriptionForm.nom.$dirty}"
+				aria-describedby="emailHelp">
+			<div ng-show="inscriptionForm.nom.$invalid">
+				<div id="nomHelp" class="form-text">champ obligatoire</div>
+			</div>
+		</div>
+		<div class="mb-3">
+			<label for="exampleInputEmail1" class="form-label">prenom</label> <input
+				type="text" ng-model="utilisateur.prenom" name="prenom"
+				ng-class="{'is-invalid': inscriptionForm.prenom.$invalid && inscriptionForm.prenom.$dirty}"
+				required="required" class="form-control"
+				aria-describedby="emailHelp">
+			<div id="emailHelp" class="form-text">champ obligatoire</div>
+		</div>
+		<div class="mb-3">
+			<label for="exampleInputEmail1" class="form-label">password</label> <input
+				type="password" ng-model="utilisateur.mdp" name="mdp"
+				ng-class="{'is-invalid': inscriptionForm.mdp.$invalid && inscriptionForm.mdp.$dirty}"
+				required="required" class="form-control"
+				aria-describedby="emailHelp">
+			<div id="emailHelp" class="form-text">champ obligatoire</div>
+		</div>
+		<label>nombre enfants</label> <select ng-model="nbrEnfants"
+			ng-change="majNbrEnfants()" ng-required="true">
+			<option ng-repeat="nbr in nbrs">{{nbr}}</option>
+		</select>
+		<div ng-repeat="enfant in utilisateur.enfants" ng-show="{nbrEnfants > 0}">
+			enfant N°{{$index +1}}<br />
+			<hr>
+			<div ng-class="{odd: $odd, even: $even}">
+				<label class="form-label">nom</label><input  class="form-control" ng-model="enfant.nomEnfant" /><br /> <label class="form-label">prenom</label><input
+					ng-model="enfant.prenomEnfant"  class="form-control"/> <br /> <br />
+			</div>
+		</div>
+		<div class="col-12">
+			<button class="btn btn-primary "
+				ng-class="{'disabled': inscriptionForm.$invalid}" type="submit">Envoyer</button>
+		</div>
+	</form>
 </div>
