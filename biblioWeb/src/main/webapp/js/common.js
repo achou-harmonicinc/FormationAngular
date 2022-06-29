@@ -30,8 +30,8 @@ function controleurConsultation($scope, livreService) {
     }
     $scope.newLivre = {"id": '', "isbn" : "", "titre": ""};
     $scope.ajouterLivre=function() {
-        livreService.saveLivre($scope.newLivre).success(function() {
-            alert("Livre Ajouté");
+        livreService.saveLivre($scope.newLivre).success(function(livreWS) {
+            $scope.livres[$scope.livres.length] = livreWS;
         });
     }
 }

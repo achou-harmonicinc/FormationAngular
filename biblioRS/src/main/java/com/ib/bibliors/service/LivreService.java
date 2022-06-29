@@ -2,6 +2,7 @@ package com.ib.bibliors.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,13 +31,13 @@ public class LivreService {
 			livres = new HashMap<Integer, Livre>();
 
 			// creation d un livre
-			Livre livre = new Livre(1, "123-abc-456", "livre du webservice RS static", LocalDate.now());
+			Livre livre = new Livre(1, "123-abc-456", "livre du webservice RS static",  new Date(), 10.15f);
 			// ajout a la liste
 			livres.put(1, livre);
-			livre = new Livre(2, "789-def-456", "livre du webservice RS 2", LocalDate.now());
+			livre = new Livre(2, "789-def-456", "livre du webservice RS 2",  new Date(), 22.15f);
 			// ajout a la liste
 			livres.put(2, livre);
-			livre = new Livre(3, "456-etr-456", "livre du webservice RS 3", LocalDate.now());
+			livre = new Livre(3, "456-etr-456", "livre du webservice RS 3",  new Date(), 16.47f);
 			// ajout a la liste
 			livres.put(3, livre);
 		}
@@ -49,11 +50,11 @@ public class LivreService {
 
 		/*
 		 * // creation d un livre Livre livre = new Livre(1, "123-abc-456",
-		 * "livre du webservice RS", LocalDate.now()); // ajout a la liste
+		 * "livre du webservice RS",  new Date()); // ajout a la liste
 		 * livres.add(livre); livre = new Livre(2, "789-def-456",
-		 * "livre du webservice RS 2", LocalDate.now()); // ajout a la liste
+		 * "livre du webservice RS 2",  new Date()); // ajout a la liste
 		 * livres.add(livre); livre = new Livre(3, "456-etr-456",
-		 * "livre du webservice RS 3", LocalDate.now()); // ajout a la liste
+		 * "livre du webservice RS 3",  new Date()); // ajout a la liste
 		 * livres.add(livre);
 		 */
 		return new ArrayList<Livre>(livres.values());
@@ -67,13 +68,13 @@ public class LivreService {
 
 		switch (id) {
 		case 1:
-			livre = new Livre(1, "123-abc-456", "livre du webservice RS", LocalDate.now());
+			livre = new Livre(1, "123-abc-456", "livre du webservice RS", new Date(), 10.52f);
 			break;
 		case 2:
-			livre = new Livre(2, "789-def-456", "livre du webservice RS 2", LocalDate.now());
+			livre = new Livre(2, "789-def-456", "livre du webservice RS 2",  new Date(), 17.52f);
 			break;
 		case 3:
-			livre = new Livre(3, "456-etr-456", "livre du webservice RS 3", LocalDate.now());
+			livre = new Livre(3, "456-etr-456", "livre du webservice RS 3",  new Date(), 15.52f);
 			break;
 		default:
 			break;
@@ -84,10 +85,13 @@ public class LivreService {
 
 	@POST
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public void save(Livre livre) {
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Livre save(Livre livre) {
 		Integer id = compteurId++;
 		livre.setId(id);
 		livres.put(id, livre);
+		
+		return livre;
 
 	}
 

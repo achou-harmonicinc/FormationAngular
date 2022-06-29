@@ -1,13 +1,13 @@
-	package com.ib.bibliors.bo;
+package com.ib.bibliors.bo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -21,20 +21,30 @@ public class Livre implements Serializable {
 	private Integer id;
 	private String isbn;
 	private String titre;
-	@XmlTransient
-	private LocalDate dateDeParution;
+	//@XmlTransient
+	private Date dateDeParution;
+	private Float prix;
 
 	public Livre() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Livre(Integer id, String isbn, String titre, LocalDate dateDeParution) {
+	public Livre(Integer id, String isbn, String titre, Date dateDeParution) {
 		super();
 		this.id = id;
 		this.isbn = isbn;
 		this.titre = titre;
 		this.dateDeParution = dateDeParution;
+	}
+
+	public Livre(Integer id, String isbn, String titre, Date dateDeParution, Float prix) {
+		super();
+		this.id = id;
+		this.isbn = isbn;
+		this.titre = titre;
+		this.dateDeParution = dateDeParution;
+		this.prix = prix;
 	}
 
 	public Integer getId() {
@@ -61,19 +71,27 @@ public class Livre implements Serializable {
 		this.titre = titre;
 	}
 
-	public LocalDate getDateDeParution() {
+	
+
+	public Date getDateDeParution() {
 		return dateDeParution;
 	}
 
-	public void setDateDeParution(LocalDate dateDeParution) {
+	public void setDateDeParution(Date dateDeParution) {
 		this.dateDeParution = dateDeParution;
+	}
+
+	public Float getPrix() {
+		return prix;
+	}
+
+	public void setPrix(Float prix) {
+		this.prix = prix;
 	}
 
 	@Override
 	public String toString() {
-		return "Livre [id=" + id + ", isbn=" + isbn + ", titre=" + titre + ", dateDeParution=" + dateDeParution + "]";
+		return "Livre [id=" + id + ", isbn=" + isbn + ", titre=" + titre + ", dateDeParution=" + dateDeParution
+				+ ", prix=" + prix + "]";
 	}
-
 }
-
-
