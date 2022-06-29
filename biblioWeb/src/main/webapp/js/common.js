@@ -17,15 +17,23 @@ function controleurInscription($scope) {
 }
 
 function controleurConsultation($scope, livreService) {
-    $scope.titrePage = "Consultation";
 
     livreService.getLivres().success(function(livre) {
         $scope.livres = livre;
     });
 
+    $scope.titrePage = "Consultation";
 
-
-
+    $scope.idSort = 'id';
+    $scope.togglerSort = function() {
+        $scope.idSort = ($scope.idSort = 'id') ? '-id' : 'id';
+    }
+    $scope.newLivre = {"id": '', "isbn" : "", "titre": ""};
+    $scope.ajouterLivre=function() {
+        livreService.saveLivre($scope.newLivre).success(function() {
+            alert("Livre Ajouté");
+        });
+    }
 }
 
 function controleurContact($scope) {
@@ -60,10 +68,10 @@ var monAppli = angular.module("monAppli", ['ngRoute']);
 monAppli.factory("livreService", function($http) {
 	return {
 		getLivres: function() {
-			return $http.get("/biblioWeb/livres.json");
+			return $http.get("/biblioRS/serviceRS/livre");
 		},
         saveLivre: function(livre) {
-            return $http.post("/biblioweb/livre", livre);
+            return $http.post("/biblioRS/serviceRS/livre", livre);
         }
 	};
 });
